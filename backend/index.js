@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors');
 require('dotenv').config()
 const todoPath = require('./routes/todo')
 const connectionToDB = require('./config/connectToDb')
@@ -11,6 +12,7 @@ connectionToDB()
 
 
 app.use(express.json())
+app.use(cors({origin: 'http://localhost:3000'}));
 
 app.use(todoPath)
 
